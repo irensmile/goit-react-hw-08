@@ -3,13 +3,19 @@ import "./App.css";
 import { ContactForm } from "./components/ContactForm/ContactForm";
 import { ContactList } from "./components/ContactList/ContactList";
 import { SearchBox } from "./components/SearchBox/SearchBox";
-import { useEffect } from "react";
-import { fetchContacts } from "./redux/operations";
+import { lazy, useEffect } from "react";
+import { fetchContacts } from "./redux/contacts/operations";
 import {
   getContactItemsSelector,
   getErrorSelector,
   getIsLoadingSelector,
-} from "./redux/selectors";
+} from "./redux/contacts/selectors";
+
+const HomePage = lazy(() => import('./pages/Home'));
+const LoginPage = lazy(() => import('./pages/Login'));
+const RegisterPage = lazy(() => import('./pages/Register'));
+const PhoneBookPage = lazy(() => import('./pages/Phonebook'));
+
 
 const App = () => {
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
 import { object, string } from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { getContactItemsSelector } from "../../redux/selectors";
-import { addContact } from "../../redux/operations";
+import { getContactItemsSelector } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
 
 // Form validation schema
 const FormValidationSchema = object({

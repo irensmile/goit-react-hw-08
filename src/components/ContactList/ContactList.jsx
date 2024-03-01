@@ -3,8 +3,8 @@ import { Contact } from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import {
   getContactItemsSelector,
-  getFilterSelector,
-} from "../../redux/selectors";
+} from "../../redux/contacts/selectors";
+import { getFilterSelector } from "../../redux/filter/selectors";
 
 export const ContactList = () => {
   const contacts = useSelector(getContactItemsSelector);
