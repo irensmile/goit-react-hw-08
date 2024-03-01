@@ -1,0 +1,11 @@
+.contacts {
+    padding: 0;
+    list-style-type: none;
+    width: 900px;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}

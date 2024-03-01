@@ -1,0 +1,14 @@
+.form {
+    border: 1px solid black;
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.error{
+    color: red;
+}
