@@ -1,0 +1,30 @@
+.items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid blue;
+    width: 100%;
+    position:fixed;
+    top:0;
+    left: 0;
+    padding: 30px auto;
+}
+.link{
+    color: blue;
+}
+.active{
+    color: blueviolet;
+    font-weight: bold;
+}
+.subitems {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 10px;
+}
+.logout{
+    border: none;
+    background-color: white;
+}
