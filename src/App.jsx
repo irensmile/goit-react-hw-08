@@ -11,50 +11,50 @@ import useAuth from "./hooks/useAuth";
 import { refreshUser } from "./redux/auth/operations";
 import { Toaster } from "react-hot-toast";
 
-const HomePage = lazy(() => import('./pages/Home/Home'));
-const LoginPage = lazy(() => import('./pages/Login/Login'));
-const RegisterPage = lazy(() => import('./pages/Register/Register'));
-const PhoneBookPage = lazy(() => import('./pages/PhoneBook/PhoneBook'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
-
+const HomePage = lazy(() => import("./pages/Home/Home"));
+const LoginPage = lazy(() => import("./pages/Login/Login"));
+const RegisterPage = lazy(() => import("./pages/Register/Register"));
+const PhoneBookPage = lazy(() => import("./pages/PhoneBook/PhoneBook"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 const App = () => {
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
 
   useEffect(() => {
-    console.log("Refreshing user...")
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isLoading? <div>Loading...</div> : (
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <>
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />}></Route>
-          <Route 
+          <Route
             path="/register"
-            element = {
+            element={
               <RestrictedRoute
                 redirectTo="/phonebook"
                 component={<RegisterPage />}
-              />}
+              />
+            }
           ></Route>
-          <Route 
+          <Route
             path="/login"
-            element = {
+            element={
               <RestrictedRoute
                 redirectTo="/phonebook"
                 component={<LoginPage />}
-              />}
+              />
+            }
           ></Route>
-          <Route 
+          <Route
             path="/phonebook"
-            element = {
-              <PrivateRoute
-                redirectTo="/login"
-                component={<PhoneBookPage />}
-              />}
+            element={
+              <PrivateRoute redirectTo="/login" component={<PhoneBookPage />} />
+            }
           ></Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

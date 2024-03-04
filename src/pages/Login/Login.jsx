@@ -5,7 +5,6 @@ import DocumentTitle from "../../components/DocumentTitle";
 import toast from "react-hot-toast";
 
 export const Login = () => {
-  console.log("Rendering loging");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
