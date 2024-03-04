@@ -12,7 +12,7 @@ const FormValidationSchema = object({
   number: string().required().min(3).max(50),
 });
 
-export const ContactForm = () => {
+const ContactForm = () => {
   const nameFieldId = nanoid();
   const nameNumberId = nanoid();
   const contactList = useSelector(getContactItemsSelector);
@@ -64,3 +64,4 @@ export const ContactForm = () => {
     </Formik>
   );
 };
+export default ContactForm;

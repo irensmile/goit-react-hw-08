@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com/";
 
 
 const setAuth = (token) =>{
@@ -19,12 +19,15 @@ const clearAuth = () => {
 } */
 export const signup = createAsyncThunk(
   "auth/signup",
-  async (newUserCredentials, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post("/users/signup", newUserCredentials);
+      const response = await axios.post("/users/signup", credentials);
+      console.log("Response", response);
       setAuth(response.data.token);
+
       return response.data;
     } catch (error) {
+      console.log(credentials, error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,8 +44,10 @@ export const login = createAsyncThunk(
       try {
         const response = await axios.post("/users/login", credentials);
         setAuth(response.data.token);
+        console.log('After setting a token on login', response.data);
         return response.data;
       } catch (error) {
+        console.log(error.message);
         return thunkAPI.rejectWithValue(error.message);
       }
     }
@@ -56,17 +61,19 @@ export const login = createAsyncThunk(
         clearAuth();
         return response.data;
       } catch (error) {
+        console.log(error.message);
         return thunkAPI.rejectWithValue(error.message);
       }
     }
   );
 
 
-  export const refresh = createAsyncThunk(
+  export const refreshUser = createAsyncThunk(
     "auth/refresh",
     async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const token = state.auth.token;
+        console.log('TOKEN:', token);
 
         if (token === null){
             return thunkAPI.rejectWithValue("Not authorized");

@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import css from "./SearchBox.module.css";
 import { setFilter } from "../../redux/filter/slice";
 
-export const SearchBox = () => {
+const SearchBox = () => {
   const dispatch = useDispatch();
   const onInput = (e) => {
     dispatch(setFilter(e.target.value));
@@ -15,3 +15,5 @@ export const SearchBox = () => {
     </>
   );
 };
+
+export default SearchBox;

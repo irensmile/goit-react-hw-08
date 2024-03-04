@@ -6,7 +6,7 @@ import {
 } from "../../redux/contacts/selectors";
 import { getFilterSelector } from "../../redux/filter/selectors";
 
-export const ContactList = () => {
+const ContactList = () => {
   const contacts = useSelector(getContactItemsSelector);
   const searchMessage = useSelector(getFilterSelector);
 
@@ -30,3 +30,4 @@ export const ContactList = () => {
     </div>
   );
 };
+export default ContactList;
